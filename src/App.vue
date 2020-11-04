@@ -1,17 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import { reactive, toRefs } from 'vue'
+  export default {
+    setup () {
+      const state = reactive({
+        count: 0,
+      })
+    const add =()=>{
+      state.count ++;
+    }
+      return {
+        ...toRefs(state),
+        add
+      }
+    }
   }
-}
 </script>
 
 <style>
@@ -21,6 +27,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 </style>
