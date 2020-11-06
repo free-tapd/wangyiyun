@@ -1,24 +1,27 @@
 <template>
   <div class="music-container">
-    <div class="top-bg">
       <Search v-model:foo="value" :placeholder="placeholder" />
+    <div class="selected">
       <div class="category-title">
         <router-link to="/recommend">推荐</router-link>
         <router-link to="/singers">歌手</router-link>
         <router-link to="/rank">排行榜</router-link>
       </div>
-      <Swiper :banners="banners" />
     </div>
     <div class="music-list">
-      <van-row>
+      <Swiper :banners="banners" />
+      <div class="before"></div>
+      <van-row type="flex" justify="space-around">
         <van-col
-          span="8"
+          style="width:32%"
           v-for="(item, index) in musicList.result"
           :key="index"
         >
           <div class="img-wrapper">
+            <div class="decorate"> <span class="iconfont play"></span></div>
             <img :src="item.picUrl" alt="" />
           </div>
+          <div class="desc">{{ item.name }}</div>
         </van-col>
       </van-row>
     </div>
@@ -67,10 +70,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .music-container {
-  .top-bg {
-    // position: absolute;
-    // top: -300px;
-    height: 200px;
+  .selected {
     width: 100%;
     background: rgb(212, 68, 57);
     z-index: 1;
@@ -82,24 +82,58 @@ export default {
       justify-content: space-around;
 
       a {
-        color: rgb(241, 241, 241);
         background: rgb(212, 68, 57);
         padding: 3px 0px;
-        font-weight: 700;
+    font-size: 14px;
+    color: rgb(228, 228, 228);
       }
     }
   }
   .music-list {
+    .before{
+      position: absolute;
+    top: -300px;
+    height: 400px;
+    width: 100%;
+    background: rgb(212, 68, 57);
+    z-index: 1;
+    }
+    position: fixed;
+    left: 0;
+    right: 0;
     width: 98%;
     margin: 0 auto;
-    margin-top: 60px;
+    // margin-top: 60px;
     .img-wrapper {
       height: 120px;
-      img{
+      position: relative;
+      .decorate {
+        z-index: 1;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 35px;
+        border-radius: 3px;
+        background: linear-gradient(
+          rgba(110, 110, 110, 0.4),
+          rgba(255, 255, 255, 0)
+        );
+      }
+      img {
         width: 100%;
         height: 100%;
         display: block;
       }
+    }
+    .desc {
+      overflow: hidden;
+      margin-top: 2px;
+      padding: 0px 2px;
+      height: 50px;
+      text-align: left;
+      font-size: 12px;
+      line-height: 1.4;
+      color: rgb(46, 48, 48);
     }
   }
 }
