@@ -1,24 +1,25 @@
 <template>
   <div class="music-container">
-      <Search v-model:foo="value" :placeholder="placeholder" />
+    <Search v-model:foo="value" :placeholder="placeholder" />
     <div class="selected">
       <div class="category-title">
         <router-link to="/recommend">推荐</router-link>
         <router-link to="/singers">歌手</router-link>
         <router-link to="/rank">排行榜</router-link>
       </div>
+      <div class="before"></div>
     </div>
     <div class="music-list">
       <Swiper :banners="banners" />
-      <div class="before"></div>
-      <van-row type="flex" justify="space-around">
+      <h1 class="title">推荐歌单</h1>
+      <van-row type="flex" justify="space-around" class="music-list_container">
         <van-col
           style="width:32%"
           v-for="(item, index) in musicList.result"
           :key="index"
         >
           <div class="img-wrapper">
-            <div class="decorate"> <span class="iconfont play"></span></div>
+            <div class="decorate"><span class="iconfont play"></span></div>
             <img :src="item.picUrl" alt="" />
           </div>
           <div class="desc">{{ item.name }}</div>
@@ -70,6 +71,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .music-container {
+  background-color: #fff;
   .selected {
     width: 100%;
     background: rgb(212, 68, 57);
@@ -84,26 +86,41 @@ export default {
       a {
         background: rgb(212, 68, 57);
         padding: 3px 0px;
-    font-size: 14px;
-    color: rgb(228, 228, 228);
+        font-size: 14px;
+        color: rgb(228, 228, 228);
       }
+    }
+    .before {
+      position: absolute;
+      // top: 50px;
+      height: 150px;
+      width: 100%;
+      background: rgb(212, 68, 57);
     }
   }
   .music-list {
-    .before{
-      position: absolute;
-    top: -300px;
-    height: 400px;
-    width: 100%;
-    background: rgb(212, 68, 57);
-    z-index: 1;
-    }
     position: fixed;
     left: 0;
     right: 0;
-    width: 98%;
+    // width: 98%;
     margin: 0 auto;
+    z-index: 1;
+        overflow-y: scroll;
+    height: 600px;
     // margin-top: 60px;
+    h1{
+      background-color: #fff;
+          font-weight: 700;
+    padding-left: 6px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 60px;
+    }
+    .music-list_container{
+      width: 98%;
+      background-color: #fff;
+      margin: 0 auto;
+    }
     .img-wrapper {
       height: 120px;
       position: relative;
