@@ -12,19 +12,19 @@ const routes = [
         path: "recommend",
         name: "recommend",
         component: () =>
-          import(/* webpackChunkName: "reactinfo" */ "../views/home/children/recommend"),
+          import(/* webpackChunkName: "recommend" */ "../views/home/children/recommend"),
       },
       {
         path: "singers",
         name: "singers",
         component: () =>
-          import(/* webpackChunkName: "reactinfo" */ "../views/home/children/singers"),
+          import(/* webpackChunkName: "singers" */ "../views/home/children/singers"),
       },
       {
         path: "rank",
         name: "rank",
         component: () =>
-          import(/* webpackChunkName: "reactinfo" */ "../views/home/children/rank"),
+          import(/* webpackChunkName: "rank" */ "../views/home/children/rank"),
       },
     ]
   },
@@ -32,7 +32,12 @@ const routes = [
     path: "/login",
     name: "login",
     component: () =>
-      import(/* webpackChunkName: "reactinfo" */ "../views/login"),
+      import(/* webpackChunkName: "login" */ "../views/login"),
+  },{
+    path:"/recommend-detail",
+    name: "recommendDetail",
+    component: () =>
+      import(/* webpackChunkName: "recommendDetail" */ "../views/recommend-detail")
   }
   
 ];
