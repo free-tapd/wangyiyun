@@ -7,6 +7,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    redirect:"/recommend",
     children:[
       {
         path: "recommend",
