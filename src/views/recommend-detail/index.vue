@@ -55,7 +55,7 @@
           ><span>播放全部 <span class="sum">(共{{playlist.tracks.length}}首)</span></span>
         </div>
         <div class="add_list">
-          <i class="iconfont iconjiahao"></i><span>收藏(350.4万)</span>
+          <i class="iconfont iconjiahao"></i><span>收藏({{playlist.commentCount}}万)</span>
         </div>
       </div>
       <ul class="singer-list">
