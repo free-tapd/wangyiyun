@@ -1,13 +1,5 @@
 <template>
   <div class="music-container">
-    <!-- <Search v-model:foo="value" :placeholder="placeholder" />
-    <div class="selected">
-      <div class="category-title">
-        <router-link to="/">推荐</router-link>
-        <router-link to="/singers">歌手</router-link>
-        <router-link to="/rank">排行榜</router-link>
-      </div>
-    </div> -->
     <div class="music-list">
       <h1>官方榜</h1>
       <ul  v-for="(item, index) in banners" :key="index" v-show="index<4" >
