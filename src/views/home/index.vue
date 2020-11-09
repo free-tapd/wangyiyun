@@ -7,7 +7,7 @@
         <router-link to="/singers">歌手</router-link>
         <router-link to="/rank">排行榜</router-link>
       </div>
-      <div class="before"></div>
+      <!-- <div class="before"></div> -->
     </div>
     <router-view></router-view>
    
