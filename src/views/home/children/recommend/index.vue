@@ -9,7 +9,7 @@
           v-for="(item, index) in musicList.result"
           :key="index"
         >
-          <div class="img-wrapper">
+          <div class="img-wrapper" @click="goDetail(item)">
             <div class="decorate"><span class="iconfont play"></span></div>
             <img :src="item.picUrl" alt="" />
           </div>
@@ -22,6 +22,7 @@
 <script>
 import Swiper from "@/components/swiper.vue";
 import Search from "@/components/search.vue";
+import { useRouter } from "vue-router";
 import { reactive, toRefs, getCurrentInstance, onMounted } from "vue";
 export default {
   setup() {
@@ -32,7 +33,7 @@ export default {
       musicList: {},
     });
     const { ctx } = getCurrentInstance();
-    console.log(ctx.$http);
+    const {push}= useRouter();
     const getBanner = () => {
       ctx.$http.get("banner").then((res) => {
         console.log(res);
@@ -45,13 +46,19 @@ export default {
         state.musicList = res;
       });
     };
+    const goDetail =(item)=>{
+     push({
+        name: "recommendDetail",
+        params:{id:item.id}
+      })
+    }
     onMounted(() => {
       getBanner();
       getList();
     });
     return {
       ...toRefs(state),
-      getBanner,
+      goDetail,
     };
   },
   components: {
@@ -62,15 +69,7 @@ export default {
 </script>
 <style lang="less" scoped>
    .music-list {
-    position: fixed;
-    left: 0;
-    right: 0;
-    // width: 98%;
-    margin: 0 auto;
-    z-index: 1;
-        overflow-y: scroll;
-    height: 600px;
-    // margin-top: 60px;
+  
     h1{
       background-color: #fff;
           font-weight: 700;

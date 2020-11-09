@@ -35,7 +35,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/login"),
   },{
-    path:"/recommend-detail",
+    path:"/recommend-detail/:id",
     name: "recommendDetail",
     component: () =>
       import(/* webpackChunkName: "recommendDetail" */ "../views/recommend-detail")

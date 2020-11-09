@@ -5705,7 +5705,7 @@ nan@^2.12.1:
   resolved "https://registry.npm.taobao.org/nan/download/nan-2.14.2.tgz?cache=0&sync_timestamp=1602591700047&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnan%2Fdownload%2Fnan-2.14.2.tgz#f5376400695168f4cc694ac9393d0c9585eeea19"
   integrity sha1-9TdkAGlRaPTMaUrJOT0MlYXu6hk=
 
-nanoid@^3.1.15:
+nanoid@^3.1.15, nanoid@^3.1.16:
   version "3.1.16"
   resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-3.1.16.tgz?cache=0&sync_timestamp=1603674752788&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnanoid%2Fdownload%2Fnanoid-3.1.16.tgz#b21f0a7d031196faf75314d7c65d36352beeef64"
   integrity sha1-sh8KfQMRlvr3UxTXxl02NSvu72Q=
@@ -6718,6 +6718,16 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.27, postcss@^7.0.3
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
+
+postcss@^8.1.6:
+  version "8.1.6"
+  resolved "https://registry.npm.taobao.org/postcss/download/postcss-8.1.6.tgz?cache=0&sync_timestamp=1604592028975&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpostcss%2Fdownload%2Fpostcss-8.1.6.tgz#b022ba2cfb8701da234d073ed3128c5a384c35ff"
+  integrity sha1-sCK6LPuHAdojTQc+0xKMWjhMNf8=
+  dependencies:
+    colorette "^1.2.1"
+    line-column "^1.0.2"
+    nanoid "^3.1.16"
+    source-map "^0.6.1"
 
 prelude-ls@~1.1.2:
   version "1.1.2"

@@ -7,9 +7,11 @@
         <router-link to="/singers">歌手</router-link>
         <router-link to="/rank">排行榜</router-link>
       </div>
-      <!-- <div class="before"></div> -->
+      <div class="before"></div>
     </div>
-    <router-view></router-view>
+    <router-view class="container">
+     
+    </router-view>
    
   </div>
 </template>
@@ -60,6 +62,16 @@ export default {
       background: rgb(212, 68, 57);
     }
   }
- 
+ .container{
+     position: fixed;
+    left: 0;
+    right: 0;
+    // width: 98%;
+    margin: 0 auto;
+    z-index: 1;
+        overflow-y: scroll;
+    height: 600px;
+    // margin-top: 60px;
+ }
 }
 </style>
