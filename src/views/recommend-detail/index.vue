@@ -59,7 +59,7 @@
         </div>
       </div>
       <ul class="singer-list">
-        <li v-for="(item,index) in playlist.tracks" :key="index">
+        <li v-for="(item,index) in playlist.tracks" :key="index" @click='gotoMusicPlay(item)'>
           <span class="index">{{index+1}}</span>
           <div class="info">
             <span>{{item.name}}</span>
@@ -81,6 +81,7 @@ export default {
     })
     const {ctx} = getCurrentInstance()
     const {params} = useRoute()
+    const {push}= useRouter();
     const getSingDetail = ()=>{
       ctx.$http.get('playlist/detail',params).then(res=>{
         console.log(res);
@@ -93,11 +94,18 @@ export default {
         state.privileges =privileges
       })
     }
+    const gotoMusicPlay = (item)=>{
+      push({
+        name: "musicPlay",
+        params:{id:item.id}
+      })
+    }
     onMounted(()=>{
       getSingDetail()
     })
     return{
-      ...toRefs(state)
+      ...toRefs(state),
+      gotoMusicPlay
     }
   }
 }

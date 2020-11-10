@@ -43,14 +43,8 @@ export default {
         console.log(state.banners);
       });
     };
-    // const getList = () => {
-    //   ctx.$http.get("personalized").then((res) => {
-    //     state.musicList = res;
-    //   });
-    // };
     onMounted(() => {
       getBanner();
-      //getList();
     });
     return {
       ...toRefs(state),

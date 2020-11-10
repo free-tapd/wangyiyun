@@ -34,12 +34,20 @@ const routes = [
     name: "login",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/login"),
-  },{
+  },
+  {
     path:"/recommend-detail/:id",
     name: "recommendDetail",
     component: () =>
       import(/* webpackChunkName: "recommendDetail" */ "../views/recommend-detail")
+  },
+  {
+    path:"/music-play",
+    name: "musicPlay",
+    component: () =>
+      import(/* webpackChunkName: "recommendDetail" */ "../views/music-play/index.vue")
   }
+
   
 ];
 console.log(process.env);
