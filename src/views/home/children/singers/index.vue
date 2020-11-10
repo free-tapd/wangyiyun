@@ -2,8 +2,5 @@
   <div>
     singers
 
-
-
-
   </div>
 </template>
