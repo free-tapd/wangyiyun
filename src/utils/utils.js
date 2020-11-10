@@ -33,3 +33,8 @@ uw=name.replace(/\b\w+\b/g, function(word){
   return word.substring(0,1).toUpperCase()+word.substring(1);}
   );
 console.log(addBrackets('a4b2c 7d4xx8yy6'))
+
+function sum(a, b) {
+    return a + b;
+  }
+module.exports = sum;
