@@ -2,7 +2,7 @@
     <div>
         <div>播放</div>
         <div class='song' v-for="(item, index) in songlist" :key="index" >
-            <audio :src="item.url" controls autoplay></audio>
+            <audio :src="item.url" controls autoplay loop></audio>
         </div>
     </div>
 </template>

@@ -2,7 +2,7 @@
   <div class="music-container">
     <div class="music-list">
       <h1>官方榜</h1>
-      <ul  v-for="(item, index) in banners" :key="index" v-show="index<4" >
+      <ul  v-for="(item, index) in banners" :key="index" v-show="index<4" @click="goDetail(item)">
         <li>
           <img :src="item.coverImgUrl" alt class="imgs" />
           <i>{{item.updateFrequency}}</i>
@@ -25,6 +25,7 @@
 <script>
 import Search from "@/components/search.vue";
 import Swiper from "@/components/swiper.vue";
+import { useRouter } from "vue-router";
 import { reactive, toRefs, getCurrentInstance, onMounted } from "vue";
 export default {
   setup() {
@@ -34,6 +35,7 @@ export default {
       banners: [],
       musicList: {}
     });
+    const {push} = useRouter()
     const { ctx } = getCurrentInstance();
     console.log(ctx.$http);
     const getBanner = () => {
@@ -43,12 +45,19 @@ export default {
         console.log(state.banners);
       });
     };
+    const goDetail = (item)=>{
+        push({
+        name: "recommendDetail",
+        params:{id:item.id}
+      })
+    }
     onMounted(() => {
       getBanner();
     });
     return {
       ...toRefs(state),
-      getBanner
+      getBanner,
+      goDetail
     };
   },
   components: {
@@ -80,6 +89,7 @@ export default {
     }
   }
   .music-list {
+      background: #f2f3f4;
     h1 {
       text-align: left;
       background: #f2f3f4;
