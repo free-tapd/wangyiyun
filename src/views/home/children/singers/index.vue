@@ -4,12 +4,10 @@
       <!-- 分类列表 -->
       <div class="sort">
         <span class="a1">分类(默认热门):</span>
-        <span class="a2">华语男</span>
-        <span class="a2">华语女</span>
-        <span class="a2">欧美男</span>
-        <span class="a2">欧美女</span>
-        <span class="a2">华语组合</span>
-        <span class="a2">欧美组合</span>
+        <span class="a2" v-for="(item, index) in tags" :key="index">{{
+          item.name
+        }}</span>
+        <!-- <span class="a2">华语女</span> -->
       </div>
       <!-- 字母列表 -->
       <div class="letter">
@@ -57,6 +55,7 @@ export default {
       placeholder: "输入音乐",
       banners: [],
       sing: [],
+      tags: [],
       musicList: {},
     });
     const { ctx } = getCurrentInstance();
@@ -68,11 +67,18 @@ export default {
         console.log(state.banners);
       });
     };
+    const getArt = () => {
+      ctx.$http.get("/playlist/hot").then((res) => {
+        console.log(res);
+        state.tags = res.tags;
+        console.log(state.tags);
+      });
+    };
     const getSing = () => {
       ctx.$http.get("/toplist/artist").then((res) => {
         console.log(res);
         state.sing = res.list.artists;
-        console.log(state.sing);
+        // console.log(state.sing);
       });
     };
     // const getList = () => {
@@ -83,12 +89,14 @@ export default {
     onMounted(() => {
       getBanner();
       getSing();
+      getArt();
       //getList();
     });
     return {
       ...toRefs(state),
       getBanner,
       getSing,
+      getArt,
     };
   },
   components: {
