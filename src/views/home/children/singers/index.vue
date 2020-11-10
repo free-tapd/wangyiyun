@@ -23,14 +23,14 @@
       </div>
       <!-- 歌手列表 -->
       <div class="list">
-        <div class="singer-list">
+        <div class="singer-list" v-for="(item, index) in sing" :key="index">
           <div class="singer-img">
-            <img src="../../../../assets/image/singer.jpg" alt="" />
+            <img :src="item.img1v1Url" alt="" />
           </div>
-          <div class="singer-name">周杰伦</div>
+          <div class="singer-name">{{ item.name }}</div>
         </div>
 
-        <div class="singer-list">
+        <!-- <div class="singer-list">
           <div class="singer-img">
             <img src="../../../../assets/image/gs.jpg" alt="" />
           </div>
@@ -41,92 +41,7 @@
             <img src="../../../../assets/image/singer.jpg" alt="" />
           </div>
           <div class="singer-name">周杰伦</div>
-        </div>
-
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/gs.jpg" alt="" />
-          </div>
-          <div class="singer-name">薛之谦</div>
-        </div>
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/singer.jpg" alt="" />
-          </div>
-          <div class="singer-name">周杰伦</div>
-        </div>
-
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/gs.jpg" alt="" />
-          </div>
-          <div class="singer-name">薛之谦</div>
-        </div>
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/singer.jpg" alt="" />
-          </div>
-          <div class="singer-name">周杰伦</div>
-        </div>
-
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/gs.jpg" alt="" />
-          </div>
-          <div class="singer-name">薛之谦</div>
-        </div>
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/singer.jpg" alt="" />
-          </div>
-          <div class="singer-name">周杰伦</div>
-        </div>
-
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/gs.jpg" alt="" />
-          </div>
-          <div class="singer-name">薛之谦</div>
-        </div>
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/singer.jpg" alt="" />
-          </div>
-          <div class="singer-name">周杰伦</div>
-        </div>
-
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/gs.jpg" alt="" />
-          </div>
-          <div class="singer-name">薛之谦</div>
-        </div>
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/singer.jpg" alt="" />
-          </div>
-          <div class="singer-name">周杰伦</div>
-        </div>
-
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/gs.jpg" alt="" />
-          </div>
-          <div class="singer-name">薛之谦</div>
-        </div>
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/singer.jpg" alt="" />
-          </div>
-          <div class="singer-name">周杰伦</div>
-        </div>
-
-        <div class="singer-list">
-          <div class="singer-img">
-            <img src="../../../../assets/image/gs.jpg" alt="" />
-          </div>
-          <div class="singer-name">薛之谦</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -141,6 +56,7 @@ export default {
       value: "",
       placeholder: "输入音乐",
       banners: [],
+      sing: [],
       musicList: {},
     });
     const { ctx } = getCurrentInstance();
@@ -152,6 +68,13 @@ export default {
         console.log(state.banners);
       });
     };
+    const getSing = () => {
+      ctx.$http.get("/toplist/artist").then((res) => {
+        console.log(res);
+        state.sing = res.list.artists;
+        console.log(state.sing);
+      });
+    };
     // const getList = () => {
     //   ctx.$http.get("personalized").then((res) => {
     //     state.musicList = res;
@@ -159,11 +82,13 @@ export default {
     // };
     onMounted(() => {
       getBanner();
+      getSing();
       //getList();
     });
     return {
       ...toRefs(state),
       getBanner,
+      getSing,
     };
   },
   components: {
